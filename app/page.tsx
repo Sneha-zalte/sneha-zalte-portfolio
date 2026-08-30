@@ -18,20 +18,24 @@ export default function Home() {
     <>
       <BootIntro />
       <FuturisticCursor />
-      <Ambient />
-      <Scene3D />
-      <Navbar />
-      <main className="relative z-10 mx-auto w-[min(1120px,92%)]">
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Education />
-        <Achievements />
-        <Contact />
-      </main>
-      <Footer />
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
+        <Ambient />
+        <Scene3D />
+      </div>
+      <div className="relative z-10">
+        <Navbar />
+        <main className="relative mx-auto w-[min(1120px,92%)]">
+          <Hero />
+          <About />
+          <Experience />
+          <Skills />
+          <Projects />
+          <Education />
+          <Achievements />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

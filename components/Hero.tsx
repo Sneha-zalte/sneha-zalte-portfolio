@@ -47,7 +47,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative grid min-h-[88vh] items-center gap-12 py-16 md:grid-cols-[1.1fr_.9fr] md:py-20"
+      className="relative grid items-start gap-10 pt-24 pb-12 md:grid-cols-[1.1fr_.9fr] md:gap-12 md:pt-28 md:pb-16"
     >
       <div className="relative z-10">
         <motion.span
@@ -119,10 +119,10 @@ export function Hero() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-20 mx-auto w-full max-w-[300px]"
+        className="relative z-30 mx-auto w-full max-w-[420px] md:-mt-16"
         style={{ perspective: 1000 }}
         onMouseMove={(e) => {
           const r = e.currentTarget.getBoundingClientRect();
@@ -134,26 +134,19 @@ export function Hero() {
           my.set(0);
         }}
       >
-        <div className="orbit-ring pointer-events-none">
-          <span className="orbit-dot" />
-        </div>
-        <div className="orbit-ring delayed pointer-events-none">
-          <span className="orbit-dot" />
-        </div>
-
         <motion.div
-          className="photo-holo relative z-10"
+          className="photo-holo relative mx-auto h-[560px] w-[400px]"
           style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
         >
-          <div className="absolute -inset-6 -z-10 rounded-full bg-cyan-400/20 blur-2xl" />
-          <div className="relative aspect-square overflow-hidden rounded-full border-2 border-cyan-300/50 bg-slate-900 shadow-[0_0_40px_rgba(34,211,238,0.35)]">
+          <div className="absolute inset-0">
             <Image
               src={profile.photo}
               alt={profile.name}
               fill
-              sizes="300px"
-              className="object-cover"
+              sizes="400px"
+              className="-translate-y-16 object-contain object-top drop-shadow-[0_18px_35px_rgba(0,0,0,0.55)]"
               priority
+              unoptimized
             />
           </div>
         </motion.div>

@@ -9,8 +9,9 @@ function DriftOrbs() {
   const group = useRef<THREE.Group>(null);
   const positions = useMemo(
     () =>
-      Array.from({ length: 48 }, () => ({
-        x: (Math.random() - 0.5) * 14,
+      Array.from({ length: 36 }, () => ({
+        // Keep orbs mostly on the left / far sides so they stay clear of the hero photo
+        x: (Math.random() - 0.75) * 12,
         y: (Math.random() - 0.5) * 9,
         z: (Math.random() - 0.5) * 8,
         s: 0.035 + Math.random() * 0.09,
@@ -58,11 +59,12 @@ function Scene() {
 
 export function Scene3DCanvas() {
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 opacity-75">
+    <div className="pointer-events-none absolute inset-0 opacity-75 md:[mask-image:linear-gradient(90deg,#000_0%,#000_52%,transparent_78%)] md:[-webkit-mask-image:linear-gradient(90deg,#000_0%,#000_52%,transparent_78%)]">
       <Canvas
         camera={{ position: [0, 0, 6.2], fov: 42 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
+        style={{ position: "absolute", inset: 0 }}
       >
         <Scene />
       </Canvas>

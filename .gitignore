@@ -9,3 +9,4 @@ data/submissions.json
 .vercel
 desktop.ini
 font-preview.html
+.env*

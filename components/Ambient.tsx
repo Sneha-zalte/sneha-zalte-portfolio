@@ -28,7 +28,7 @@ export function Ambient() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden md:[mask-image:linear-gradient(90deg,#000_0%,#000_52%,transparent_78%)] md:[-webkit-mask-image:linear-gradient(90deg,#000_0%,#000_52%,transparent_78%)]">
       <div className="aurora" />
       <div className="grid-noise absolute inset-0" />
       <div className="scanlines absolute inset-0" />

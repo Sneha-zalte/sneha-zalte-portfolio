@@ -174,8 +174,8 @@ html.custom-cursor * {
 }
 
 @keyframes floaty {
-  0%, 100% { transform: translateY(0) rotateX(0deg); }
-  50% { transform: translateY(-14px) rotateX(4deg); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes spin-slow {

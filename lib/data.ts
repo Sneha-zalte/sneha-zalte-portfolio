@@ -6,7 +6,7 @@ export const profile = {
   email: "snehazalte005@gmail.com",
   phone: "+91 86576 84375",
   phoneHref: "+918657684375",
-  photo: "/profile.jpg",
+  photo: "/sneha-cutout.png",
   github: "https://github.com/Sneha-zalte",
   linkedin: "https://www.linkedin.com/in/sneha-zalte/",
   availability: "Open to full-time roles",
