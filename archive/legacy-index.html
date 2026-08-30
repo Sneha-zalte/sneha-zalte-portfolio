@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sneha Zalte — Portfolio</title>
+  <meta name="description" content="Sneha Zalte — MCA student and developer. Python, Java, SQL, Data Analytics. Projects in E‑Learning and Assistive Tech (SignConnect)."/>
+  <meta property="og:title" content="Sneha Zalte — Portfolio" />
+  <meta property="og:description" content="Developer • Python • Java • Data Analytics • Android • Flask • WebRTC" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="preview.jpg" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{
+      --bg: #0b1220;          /* deep navy */
+      --card: #0f172a;        /* slate */
+      --muted: #94a3b8;       /* slate-400 */
+      --text: #e5e7eb;        /* zinc-200 */
+      --title: #f8fafc;       /* zinc-50 */
+      --accent1: 248 113 113; /* rose */
+      --accent2: 59 130 246;  /* blue */
+      --accent3: 16 185 129;  /* emerald */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;color:var(--text);background:radial-gradient(1200px 600px at 10% -10%, rgba(59,130,246,.15), transparent 50%),
+                                    radial-gradient(900px 500px at 110% 10%, rgba(244,63,94,.12), transparent 50%),
+                                    var(--bg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.6;
+    }
+    a{color:rgb(var(--accent2));text-decoration:none}
+    a:hover{opacity:.9}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(120%) blur(6px);
+      background:linear-gradient(to bottom, rgba(11,18,32,.85), rgba(11,18,32,.35));
+      border-bottom:1px solid rgba(148,163,184,.15);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:38px;height:38px;border-radius:12px;background:conic-gradient(from 120deg, rgba(var(--accent2),.9), rgba(var(--accent1),.9), rgba(var(--accent3),.9)); box-shadow:var(--shadow)}
+    .brand .name{font-weight:800;letter-spacing:.4px}
+    .links{display:flex;gap:18px;align-items:center}
+    .links a{color:var(--text);font-weight:500;opacity:.9}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;background:linear-gradient(135deg, rgba(var(--accent2),.9), rgba(var(--accent1),.9));
+      color:white;font-weight:700;box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.12)
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(148,163,184,.35);color:var(--text);font-weight:600}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding:72px 0 32px}
+    .badge{display:inline-flex;align-items:center;gap:10px;padding:6px 10px;border:1px solid rgba(148,163,184,.35);border-radius:999px;color:var(--muted);font-weight:600;background:rgba(2,6,23,.5)}
+    .title{font-family:"Space Grotesk";font-size:clamp(32px, 4.6vw, 56px);line-height:1.1;margin:14px 0 10px;color:var(--title)}
+    .subtitle{font-size:clamp(16px, 1.5vw, 18px);color:var(--muted)}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .blob{
+      width:100%;aspect-ratio:1/1;border-radius:28px;
+      background:
+        radial-gradient(60% 60% at 65% 35%, rgba(var(--accent2),.45) 0%, transparent 60%),
+        radial-gradient(60% 60% at 35% 65%, rgba(var(--accent1),.45) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow:var(--shadow), inset 0 0 60px rgba(255,255,255,.06);
+      position:relative;overflow:hidden
+    }
+    .blob::after{
+      content:""; position:absolute; inset:16px;
+      border-radius:22px; border:1px solid rgba(255,255,255,.08)
+    }
+
+    /* SECTIONS */
+    section{padding:64px 0}
+    .section-title{font-family:"Space Grotesk";font-size:28px;margin:0 0 24px;color:var(--title)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    /* ABOUT */
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .about .card{padding:24px}
+
+    /* SKILLS */
+    .chips{display:flex;flex-wrap:wrap;gap:12px}
+    .chip{padding:10px 14px;border-radius:999px;background:rgba(148,163,184,.12);border:1px solid rgba(148,163,184,.2);font-weight:600;color:var(--text)}
+
+    /* PROJECTS */
+    .grid{display:grid;grid-template-columns:repeat(12, 1fr);gap:18px}
+    .project{grid-column:span 12}
+    @media (min-width: 800px){ .project{grid-column:span 6} }
+    .project .cover{height:220px;border-radius:var(--radius) var(--radius) 0 0;background:#0b1020;display:grid;place-items:center;overflow:hidden}
+    .project .content{padding:18px}
+    .tagline{color:var(--muted);font-weight:600;font-size:14px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.25);color:var(--muted)}
+
+    /* EDUCATION */
+    .timeline{display:grid;gap:14px}
+    .edu{padding:18px}
+    .edu h4{margin:0 0 6px}
+    .edu small{color:var(--muted)}
+
+    /* ACHIEVEMENTS */
+    .list{display:grid;gap:10px}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .contact .card{padding:18px}
+    input, textarea{
+      width:100%;padding:12px 14px;margin-top:10px;border-radius:12px;background:rgba(2,6,23,.5);
+      color:var(--text);border:1px solid rgba(148,163,184,.25);outline:none
+    }
+    input:focus, textarea:focus{border-color:rgba(59,130,246,.75)}
+    textarea{min-height:120px;resize:vertical}
+    .footer{padding:40px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(148,163,184,.15)}
+
+    /* ANIMATIONS */
+    .fade{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+    .fade.in{opacity:1;transform:none}
+    .typing{border-right:2px solid rgba(255,255,255,.65);white-space:nowrap;overflow:hidden}
+
+    /* SMALL */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr;gap:28px}
+      .about{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+/*Photo*/
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.15);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Hover effect */
+.hero-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(59,130,246,0.5), var(--shadow);
+  border-color: rgba(59,130,246,0.7);
+}
+
+.hero-image img {
+  border: 4px solid transparent;
+  background: linear-gradient(135deg, #3b82f6, #ec4899) padding-box,
+              linear-gradient(135deg, #3b82f6, #ec4899) border-box;
+}
+.hero-image img {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.hero-image img {
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 15px rgba(59,130,246,0.3); }
+  to { box-shadow: 0 0 25px rgba(59,130,246,0.6); }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="name">Sneha Zalte</div>
+      </div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a class="btn secondary" href="C:\Users\SURESH ZALTE\OneDrive\Desktop\SNEHAZ\PORTFOLIO\Resume-SnehaZalte.pdf" download>
+          <i class="fa-solid fa-file-arrow-down"></i> Resume
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+   <!-- HERO -->
+<section class="hero">
+  <div>
+    <span class="badge"><i class="fa-regular fa-star"></i> Developer • MCA Student</span>
+    <h1 class="title">Hi, I'm Sneha — <span class="typing" id="type"></span></h1>
+    <p class="subtitle">Highly motivated developer passionate about building useful products and solving real-world problems with clean code, data, and delightful UI/UX.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#projects"><i class="fa-solid fa-rocket"></i> View Projects</a>
+      <a class="btn secondary" href="#contact"><i class="fa-regular fa-paper-plane"></i> Contact Me</a>
+    </div>
+  </div>
+
+  <!-- Profile Image in Circular Frame -->
+  <div class="hero-image">
+    <img src="https://i.postimg.cc/63sGcDLS/SNE.jpg" alt="Sneha Zalte">
+  </div>
+</section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about">
+        <article class="card">
+          <p>
+            I'm a programmer with strong foundations in Python, Java, SQL, and data analytics. I enjoy building end‑to‑end projects—from Android apps to assistive AI tools—and I'm currently pursuing my MCA (2024‑2026). Beyond coding, I lead with empathy and love collaborating in fast‑moving teams.
+          </p>
+		<br>
+          <div class="chips" aria-label="Languages">
+            <span class="chip">English</span>
+            <span class="chip">Hindi</span>
+            <span class="chip">Marathi</span>
+          </div>
+        </article>
+        <aside class="card">
+          <h3 style="margin-top:0">Quick Info</h3>
+          <div class="list">
+            <div><i class="fa-solid fa-location-dot"></i> Mumbai, India</div>
+            <div><i class="fa-regular fa-envelope"></i> <a href="mailto:snehazalte005@gmail.com">snehazalte005@gmail.com</a></div>
+            <div><i class="fa-solid fa-phone"></i> <a href="tel:+918657684375">+91 86576 84375</a></div>
+            <div><i class="fa-solid fa-user-check"></i> Open to internships & full‑time</div>
+          </div>
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn secondary" href="https://github.com/Sneha-zalte" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a class="btn secondary" href="https://www.linkedin.com/in/sneha-zalte/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a class="btn secondary" href="C:\Users\SURESH ZALTE\OneDrive\Desktop\SNEHAZ\PORTFOLIO\Resume-SnehaZalte.pdf" download><i class="fa-solid fa-file"></i> Download Resume</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="card" style="padding:20px">
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Java</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Android</span>
+          <span class="chip">XML</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">Flask</span>
+          <span class="chip">WebRTC</span>
+          <span class="chip">Socket.IO</span>
+          <span class="chip">MediaPipe</span>
+          <span class="chip">OpenCV</span>
+          <span class="chip">Data Analytics</span>
+        </div>
+      </div>
+    </section>
+
+  <!-- PROJECTS -->
+<section id="projects">
+<h2 class="section-title">Projects</h2>
+<div class="grid">
+<!-- Project 1 -->
+<article class="card project">
+<div class="cover">
+<svg width="100%" height="100%" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Learn-In cover">
+<defs>
+<linearGradient id="g1" x1="0" x2="1">
+<stop offset="0%" stop-color="rgba(59,130,246,.5)"/>
+<stop offset="100%" stop-color="rgba(244,63,94,.45)"/>
+</linearGradient>
+</defs>
+<rect x="0" y="0" width="600" height="220" fill="url(#g1)"/>
+<g fill="rgba(255,255,255,.5)">
+<circle cx="80" cy="120" r="46"/><rect x="140" y="92" rx="12" width="300" height="56"/>
+</g>
+</svg>
+</div>
+<div class="content">
+<h3>Learn‑In — E‑Learning Platform</h3>
+<p class="tagline">Android app for seamless learning with real‑time data via Firebase.</p>
+<p>Built using Android Studio (XML + Java), with Firebase for authentication and content sync. Focused on a clean UI and scalable data structure for courses, quizzes, and progress tracking.</p>
+<div class="tags">
+<span class="tag">Android</span>
+<span class="tag">XML</span>
+<span class="tag">Java</span>
+<span class="tag">Firebase</span>
+</div>
+</div>
+</article>
+
+
+<!-- Project 2 -->
+<article class="card project">
+<div class="cover">
+<svg width="100%" height="100%" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="SignConnect cover">
+<defs>
+<linearGradient id="g2" x1="0" x2="1">
+<stop offset="0%" stop-color="rgba(16,185,129,.45)"/>
+<stop offset="100%" stop-color="rgba(59,130,246,.45)"/>
+</linearGradient>
+</defs>
+<rect x="0" y="0" width="600" height="220" fill="url(#g2)"/>
+<g fill="rgba(255,255,255,.6)"><rect x="60" y="80" width="120" height="60" rx="8"/><rect x="200" y="70" width="140" height="80" rx="12"/><circle cx="380" cy="110" r="40"/></g>
+</svg>
+</div>
+<div class="content">
+<h3>SignConnect — Assistive Communication</h3>
+<p class="tagline">Real‑time video calling between deaf & hearing users with sign translation.</p>
+<p>Built with Flask + WebRTC for low‑latency calls, MediaPipe + OpenCV for gesture detection, and gTTS for voice. Converts signs to text/voice and supports multi‑device communication.</p>
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">Flask</span>
+<span class="tag">WebRTC</span>
+<span class="tag">Socket.IO</span>
+<span class="tag">MediaPipe</span>
+<span class="tag">OpenCV</span>
+<span class="tag">gTTS</span>
+</div>
+</div>
+</article>
+
+
+<!-- Project 3 -->
+<article class="card project">
+<div class="cover" style="background:#0b1020;display:flex;align-items:center;justify-content:center">
+<i class="fa-solid fa-chart-line" style="font-size:3rem;color:var(--accent2)"></i>
+</div>
+<div class="content">
+<h3>DataVision — Interactive Data Analytics Dashboard</h3>
+<p class="tagline">Real‑time analytics with dynamic charts and filters.</p>
+<p>Developed a Flask + Chart.js dashboard for analyzing large datasets with live filtering, CSV/Excel import, and responsive data visualization for better business decision‑making.</p>
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">Flask</span>
+<span class="tag">Chart.js</span>
+<span class="tag">Pandas</span>
+</div>
+</div>
+</article>
+
+<!-- Project 4 -->
+<article class="card project">
+<div class="cover" style="background:#0b1020;display:flex;align-items:center;justify-content:center">
+<i class="fa-solid fa-robot" style="font-size:3rem;color:var(--accent3)"></i>
+</div>
+<div class="content">
+<h3>AI-Resume-Analyzer</h3>
+<p class="tagline">Leveraging NLP & AI to give recruiters a powerful lens into candidate profiles.</p>
+<p>AI-powered Resume Analyzer that evaluates resumes based on skills, job description matching, keyword extraction, and ATS compatibility scoring.</p>
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">NLTK</span>
+<span class="tag">Streamlit</span>
+<span class="tag">SpaCy</span>
+<span class="tag">Scikit-Learn</span>
+</div>
+</div>
+</article>
+</div>
+
+</section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        <div class="card edu">
+          <h4>MCA — DES Navinchandra Mehta Institute of Technology & Development</h4>
+          <small>Pursuing (Expected 2026)</small>
+        </div>
+        <div class="card edu">
+          <h4>BCA — SNDT Women University</h4>
+          <small>2021 – 2024 • CGPA: 9.08/10</small>
+        </div>
+        <div class="card edu">
+          <h4>HSC (Science) — B.K. Birla College, Kalyan</h4>
+          <small>2019 – 2021 • 92%</small>
+        </div>
+        <div class="card edu">
+          <h4>SSC — I.E.S. School, Titwala</h4>
+          <small>2019 • 89.04%</small>
+        </div>
+      </div>
+    </section>
+
+<!-- ACHIEVEMENTS & LEADERSHIP -->
+<section id="achievements">
+<h2 class="section-title">Achievements & Leadership</h2>
+<div class="grid" style="display:flex;flex-wrap:wrap;gap:20px">
+<article class="card" style="padding:24px;flex:1;min-width:280px">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+<i class="fa-solid fa-award" style="color:gold;font-size:1.5rem"></i>
+<strong>Head of Student Council</strong>
+</div>
+<p style="color:var(--muted);font-size:14px;margin:0">Led cross‑department events, coordinated initiatives to enhance student engagement and representation.</p>
+</article>
+
+
+<article class="card" style="padding:24px;flex:1;min-width:280px">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+<i class="fa-solid fa-trophy" style="color:var(--title);font-size:1.5rem"></i>
+<strong>Innovation Award — SNDT University (2024)</strong>
+</div>
+<p style="color:var(--muted);font-size:14px;margin:0">Recognized for developing an inspiring assistive technology project benefiting the students.</p>
+</article>
+
+
+<article class="card" style="padding:24px;flex:1;min-width:280px">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+<i class="fa-solid fa-certificate" style="color:var(--accent2);font-size:1.5rem"></i>
+<strong>Certifications</strong>
+</div>
+<p style="color:var(--muted);font-size:14px;margin:0">Completed Data Science and Computer Concepts courses, strengthening analytical and technical expertise.</p>
+</article>
+</div>
+</section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <form class="card" action="https://formspree.io/f/your-form-id" method="POST">
+          <label>Name<input name="name" placeholder="Your name" required></label>
+          <label>Email<input type="email" name="email" placeholder="you@example.com" required></label>
+          <label>Message<textarea name="message" placeholder="How can I help?" required></textarea></label>
+          <button class="btn" type="submit" style="margin-top:12px"><i class="fa-regular fa-paper-plane"></i> Send</button>
+        </form>
+        <div class="card" style="padding:18px">
+          <h3 style="margin-top:0">Let’s build something great</h3>
+          <p>
+            I'm open to roles in Android, Data Analytics, Full‑stack, and AI/ML for assistive technologies. If my work resonates with you, drop a message or connect on LinkedIn.
+          </p>
+          <div class="list">
+            <div><i class="fa-solid fa-envelope"></i> <a href="mailto:snehazalte005@gmail.com">snehazalte005@gmail.com</a></div>
+            <div><i class="fa-solid fa-phone"></i> <a href="tel:+918657684375">+91 86576 84375</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Sneha Zalte • Crafted with care
+    </div>
+  </footer>
+
+  <script>
+    // Typing effect
+    const roles = [
+      'Software Developer',
+      'Android & Web Enthusiast',
+      'Python • Java • SQL',
+      'Data Analytics'
+    ];
+    let idx=0, char=0, erasing=false;
+    const el=document.getElementById('type');
+    function type(){
+      const word=roles[idx];
+      if(!erasing){char++; el.textContent=word.slice(0,char);} else {char--; el.textContent=word.slice(0,char);}    
+      if(!erasing && char===word.length){erasing=true; setTimeout(type,1400); return}
+      if(erasing && char===0){erasing=false; idx=(idx+1)%roles.length}
+      setTimeout(type, erasing?50:90);
+    }
+    type();
+
+    // Fade-in on scroll
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in') })
+    },{threshold:.14});
+    document.querySelectorAll('section, .project, .card').forEach(el=>{el.classList.add('fade'); io.observe(el)});
+
+    // Year
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sneha Zalte",
+    "jobTitle": "Software Developer",
+    "email": "snehazalte005@gmail.com",
+    "telephone": "+91 8657684375",
+    "address": {"@type":"PostalAddress","addressLocality":"Mumbai","addressRegion":"MH","addressCountry":"IN"},
+    "url": "https://your-domain.com",
+    "sameAs": ["https://github.com/Sneha-zalte", "www.linkedin.com/in/sneha-zalte"]
+  }
+  </script>
+</body>
+</html>
+

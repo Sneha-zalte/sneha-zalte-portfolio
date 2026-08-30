@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+.DS_Store
+*.log
+.env*.local
+data/submissions.json
+!data/.gitkeep
+.vercel
+desktop.ini
+font-preview.html
